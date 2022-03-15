@@ -56,6 +56,7 @@ install_main(){
 	vim_8_2_install
 	vim_help_cn_install
 	plug_vim_install
+	cp ${BASE_PATH}/vimrc ~/.vimrc
 }
 
 install_main

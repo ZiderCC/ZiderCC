@@ -51,12 +51,18 @@ function plug_vim_install() {
 	echo "Install plug.vim done."
 }
 
+function plug_install() {
+	vim -c "PlugInstall" -c "q" -c "q"
+}
+
+
 #安装主函数
 install_main(){
 	vim_8_2_install
 	vim_help_cn_install
 	plug_vim_install
 	cp ${BASE_PATH}/vimrc ~/.vimrc
+	plug_install
 }
 
 install_main

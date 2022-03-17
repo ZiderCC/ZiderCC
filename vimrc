@@ -58,10 +58,70 @@ set confirm             " 在处理未保存或只读文件的时候，弹出确
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-Plug 'preservim/tagbar'
-Plug 'preservim/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/tagbar'							"显示类/方法/变量
+Plug 'preservim/nerdtree'						"树形目录插件
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'	"美化NerdTree显示插件
+Plug 'vim-airline/vim-airline'					"底部状态增强/美化插件
+Plug 'vim-airline/vim-airline-themes'			"底部状态增强/美化插件主题
+Plug 'junegunn/vim-slash'						"优化搜索，移动光标后清除高亮
+Plug 'tpope/vim-endwise'						"if/end/endif/end/function补全
 
 call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 主题设置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark
+let g:onedark_termcolors=256
+colorscheme onedark
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_theme="onedark"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 安装、更新、删除插件
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader><leader>i :PlugInstall<cr>
+nnoremap <leader><leader>u :PlugUpdate<cr>
+nnoremap <leader><leader>c :PlugClean<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 分屏窗口移动
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 复制当前选中到系统剪切板
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vmap <leader><leader>y "+y
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 将系统剪切板内容粘贴到vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader><leader>p "+p
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nerdtree配置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <leader>n :NERDTreeToggle<cr>
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeHighlightFolders = 1         
+let g:NERDTreeHighlightFoldersFullName = 1 
+let g:NERDTreeDirArrowExpandable='▷'
+let g:NERDTreeDirArrowCollapsible='▼'

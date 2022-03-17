@@ -41,14 +41,19 @@ function vim_help_cn_install() {
 	cd ${BASE_PATH}
 }
 
-#安装plug.vim插件管理工具
-#git地址https://github.com/junegunn/vim-plug
-function plug_vim_install() {
-	echo "Install plug.vim."
-	mkdir -p ~/.vim/autoload/
-	cp ${BASE_PATH}/plug-vim/plug.vim ${VIM_PATH}/autoload/plug.vim
-	chmod +x ${VIM_PATH}/autoload/plug.vim
-	echo "Install plug.vim done."
+# 拷贝文件
+function files_install()
+{
+	mkdir -p ~/.vim
+
+    rm -rf ~/.vimrc
+	cp ${BASE_PATH}/vimrc ~/.vimrc
+
+    rm -rf ~/.vim/colors
+    cp -r ${BASE_PATH}/colors ~/.vim
+
+    rm -rf ~/.vim/autoload
+    cp -r ${BASE_PATH}/autoload ~/.vim
 }
 
 function plug_install() {
@@ -57,12 +62,11 @@ function plug_install() {
 
 
 #安装主函数
-install_main(){
+main(){
 	vim_8_2_install
 	vim_help_cn_install
-	plug_vim_install
-	cp ${BASE_PATH}/vimrc ~/.vimrc
+	files_install
 	plug_install
 }
 
-install_main
+main

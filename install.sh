@@ -11,6 +11,15 @@ function vim_8_2_install() {
 	echo "Install vim done."
 }
 
+#安装ctags
+function ctags_install() {
+    echo "Install ctags."
+    brew install ctags
+    alias ctags="`brew --prefix`/bin/ctags"
+    alias ctags >> ~/.zshrc
+    echo "Install ctags done."
+}
+
 #安装vim中文手册
 function vim_help_cn_install() {
 	echo 'Install vim help cn.'
@@ -64,6 +73,7 @@ function plug_install() {
 #安装主函数
 main(){
 	vim_8_2_install
+    ctags_install
 	vim_help_cn_install
 	files_install
 	plug_install

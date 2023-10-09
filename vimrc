@@ -72,6 +72,7 @@ Plug 'vim-airline/vim-airline-themes'               "底部状态增强/美化�
 Plug 'junegunn/vim-slash'                           "优化搜索，移动光标后清除高亮
 Plug 'tpope/vim-endwise'                            "if/end/endif/end/function补全
 Plug 'tpope/vim-fugitive'                           "git插件
+Plug 'yianwillis/vimcdoc'                           "vim中文插件
 
 call plug#end()
 
